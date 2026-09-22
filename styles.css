@@ -82,6 +82,12 @@ h1 {
   .panels { grid-template-columns: 1fr; }
 }
 
+/* HTML Preview needs full width to render real layouts, so it always
+   stacks: input on top, full-width preview below. */
+.panels.stacked {
+  grid-template-columns: 1fr;
+}
+
 .panel {
   display: flex;
   flex-direction: column;
@@ -226,6 +232,18 @@ textarea:focus, .rich-preview:focus {
   margin: 0.6em 0;
   padding: 0.2em 1em;
   color: var(--muted);
+}
+
+.html-preview-frame {
+  min-height: 70vh;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.html-preview-frame:fullscreen {
+  min-height: 100vh;
+  border-radius: 0;
 }
 
 .status {

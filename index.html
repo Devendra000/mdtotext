@@ -13,14 +13,15 @@
 
   <main class="page">
     <h1>Markdown Converter</h1>
-    <p class="subtitle">Convert Markdown to plain text, rich text, or HTML — or turn plain text back into Markdown.</p>
+    <p class="subtitle">Convert Markdown to plain text, rich text, or HTML — turn plain text back into Markdown — or preview raw HTML live.</p>
 
     <div class="mode-switch" role="tablist" aria-label="Conversion direction">
       <button type="button" class="mode-btn active" data-mode="md2text" role="tab" aria-selected="true">Markdown → Text</button>
       <button type="button" class="mode-btn" data-mode="text2md" role="tab" aria-selected="false">Text → Markdown</button>
+      <button type="button" class="mode-btn" data-mode="htmlpreview" role="tab" aria-selected="false">HTML Preview</button>
     </div>
 
-    <div class="panels">
+    <div class="panels" id="panels">
       <section class="panel">
         <div class="panel-header">
           <span class="panel-title">Input</span>
@@ -42,11 +43,14 @@
             <option value="rich">Rich Text</option>
             <option value="html">HTML</option>
           </select>
+          <button type="button" class="btn btn-icon" id="fullscreenBtn" title="Fullscreen preview" aria-label="Fullscreen preview" hidden>⛶</button>
+          <button type="button" class="btn" id="newTabBtn" hidden>Open in new tab</button>
           <button type="button" class="btn btn-primary" id="copyBtn">Copy</button>
           <button type="button" class="btn btn-icon" id="downloadBtn" title="Download output" aria-label="Download output">⭳</button>
         </div>
         <textarea id="outputText" readonly spellcheck="false" placeholder="Converted output will appear here..."></textarea>
         <div id="outputRich" class="rich-preview" hidden></div>
+        <iframe id="outputPreview" class="html-preview-frame" sandbox="allow-scripts allow-forms allow-modals allow-popups" allowfullscreen hidden title="HTML preview"></iframe>
       </section>
     </div>
 
