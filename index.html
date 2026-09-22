@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown &lt;-&gt; Text Converter</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">mdtotext</div>
+  </header>
+
+  <main class="page">
+    <h1>Markdown Converter</h1>
+    <p class="subtitle">Convert Markdown to plain text, rich text, or HTML — or turn plain text back into Markdown.</p>
+
+    <div class="mode-switch" role="tablist" aria-label="Conversion direction">
+      <button type="button" class="mode-btn active" data-mode="md2text" role="tab" aria-selected="true">Markdown → Text</button>
+      <button type="button" class="mode-btn" data-mode="text2md" role="tab" aria-selected="false">Text → Markdown</button>
+    </div>
+
+    <div class="panels">
+      <section class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Input</span>
+          <label class="toggle" id="watermarkToggleWrap">
+            <input type="checkbox" id="watermarkToggle" checked>
+            <span class="toggle-track"><span class="toggle-thumb"></span></span>
+            <span class="toggle-label">Remove AI watermarks</span>
+          </label>
+          <button type="button" class="btn" id="pasteBtn">Paste</button>
+        </div>
+        <textarea id="input" placeholder="Enter your Markdown text here..." spellcheck="false"></textarea>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Output</span>
+          <select id="formatSelect" class="select">
+            <option value="plain">Plain Text</option>
+            <option value="rich">Rich Text</option>
+            <option value="html">HTML</option>
+          </select>
+          <button type="button" class="btn btn-primary" id="copyBtn">Copy</button>
+          <button type="button" class="btn btn-icon" id="downloadBtn" title="Download output" aria-label="Download output">⭳</button>
+        </div>
+        <textarea id="outputText" readonly spellcheck="false" placeholder="Converted output will appear here..."></textarea>
+        <div id="outputRich" class="rich-preview" hidden></div>
+      </section>
+    </div>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <script src="converter.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
